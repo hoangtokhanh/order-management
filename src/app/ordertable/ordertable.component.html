@@ -1,0 +1,19 @@
+<br/><br/>
+<dx-data-grid [dataSource]="dataSource" [rowAlternationEnabled]="true">
+  <dxo-paging [pageSize]="15"></dxo-paging>
+  <dxo-pager
+  [allowedPageSizes]="[15,20]"
+  [showPageSizeSelector]="false"
+  [showInfo]="true"
+  [showPageSizeSelector]="true"
+  [showNavigationButtons]="true">
+</dxo-pager>
+<dxi-column dataField = "ID" caption="Mã đơn"></dxi-column>
+<dxi-column dataField = "name" caption="Tên món"></dxi-column>
+<dxi-column dataField = "Address" caption="Vị trí"></dxi-column>
+<dxi-column dataField = "time" caption="Thời gian"></dxi-column>
+<dxi-column dataField = "totalprice" caption="Tổng tiền"></dxi-column>
+<dxi-column dataField = "status" caption="Tình trạng đơn hàng"></dxi-column>
+
+</dx-data-grid>
+

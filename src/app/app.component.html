@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial;
+  padding: 10px;
+  background: #f2f2f2;
+}
+
+/* Header/Blog Title */
+.header {
+  padding: 10px;
+  text-align: center;
+  background: 	#FF0033;
+  color: #e9d8f4;
+}
+
+.header h1 {
+  font-size: 40px;
+}
+
+
+.header p {
+  font-size: 20px;
+}
+
+/* Style the top navigation bar */
+.topnav {
+  overflow: hidden;
+  background-color: #f2f2f2;
+}
+
+/* Định dạng link điều hướng */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Thay đổi màu liên kết khi di chuột qua */
+.topnav a:hover {
+  background-color: #f2f2f2;
+  color: white;
+}
+
+/* Tạo hai cột không bằng nhau, float cạnh nhau */
+/* Cột trái */
+.rightcolumn {
+  float: left;
+  width: 75%;
+}
+
+/* Cột phải */
+.leftcolumn {
+  float: left;
+  width: 25%;
+  background-color: #f2f2f2;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* Hình ảnh tượng trưng */
+.fakeimg {
+  font-size: 20px;
+  background-color: 	#FF0033;
+  color: #f2f2f2;
+  width: 100%;
+  padding: 15px;
+}
+
+/* Thêm định dạng thẻ cho bài viết */
+.card {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+/* Clear float khác sau các cột */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Footer */
+.footer {
+  padding: 10px;
+  text-align: center;
+  background: white;
+  margin-top: 10px;
+}
+
+/* Bố cục linh hoạt: các cột xếp chồng lên nhau thay vì cạnh nhau khi màn hình
+có chiều rộng dưới 700px */
+@media screen and (max-width: 700px) {
+  .leftcolumn, .rightcolumn {
+    width: 100%;
+    padding: 0;
+  }
+}
+
+/* Bố cục linh hoạt: Thanh menu điều hướng xếp chồng lên nhau thay vì cạnh nhau
+khi màn hình có chiều rộng dưới 300px  */
+@media screen and (max-width: 300px) {
+  .topnav a {
+    float: none;
+    width: 100%;
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="row">
+  <div class="leftcolumn">
+    <div class="card">
+      <h2 class="fakeimg">Thời gian</h2>
+      <div style="height:30px; font-size: 20px;">
+      <p>Từ ngày:</p>
+      </div>
+      <mat-form-field appearance="fill">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="startpicker">
+        <mat-datepicker-toggle matSuffix [for]="startpicker"></mat-datepicker-toggle>
+        <mat-datepicker #startpicker></mat-datepicker>
+      </mat-form-field>
+      <div style="height:30px; font-size: 20px;">
+        <p>Đến ngày:</p>
+        </div>
+        <mat-form-field appearance="fill">
+          <mat-label>Choose a date</mat-label>
+          <input matInput [matDatepicker]="endpicker">
+          <mat-datepicker-toggle matSuffix [for]="endpicker"></mat-datepicker-toggle>
+          <mat-datepicker #endpicker></mat-datepicker>
+        </mat-form-field>
+    </div>
+
+    <div class="card" s>
+      <h3 class="fakeimg">trình trạng đơn hàng</h3>
+      <div>
+          <mat-checkbox class="example-margin" style="margin-left: 10px; margin-bottom: 10px;" >Chưa giao</mat-checkbox>
+      </div>
+      <div ><mat-checkbox class="example-margin" style="margin-left: 10px;">Đã giao</mat-checkbox></div>
+
+    </div>
+    <div class="card">
+      <h3 class="fakeimg">Vị trí</h3>
+      <p>Tầng</p>
+      <select>
+        <option *ngFor="let floor of floor" value="{{floor.id}}">{{floor.name}}</option>
+      </select>
+      <p>Phòng</p>
+      <select>
+        <option *ngFor="let room of room" value="{{room.id}}">{{room.name}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="rightcolumn">
+    <div class="card">
+      <app-ordertable></app-ordertable>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>
